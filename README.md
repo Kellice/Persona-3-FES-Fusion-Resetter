@@ -26,5 +26,9 @@ The required libraries for this project are easyocr, pynput, and pyautogui. The 
 
 `pip install pyautogui`
 
+Additionally, you can use the project settings in PyCharm to add the packages to the interpreter. Searching for the packages by name should come up with only a few results, so it should be somewhat simple once you find the window.
+
+
+
 Also, in case you're wondering, TheGrinder is my pet name for the project.
 I named it as such since it reminds me of the monster grinder from Backyard Monsters, which is a very specific reference from a few years ago.
