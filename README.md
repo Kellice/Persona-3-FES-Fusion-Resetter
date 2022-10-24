@@ -26,11 +26,11 @@ The required libraries for this project are easyocr, pynput, and pyautogui. The 
 
 `pip install pyautogui`
 
+Additionally, you can use the project settings in PyCharm to add the packages to the interpreter. Searching for the packages by name should come up with only a few results, so it should be somewhat simple once you find the window.
+
 ![An example image of how the array for skills is laid out when fusing](/SkillExample.png)
 
 Above is how the skills should be numbered when editing them in line 68. In this example, skills 1, 3, 5 & 6 are the inherited skills, so the line should read `step2 = step1[[1, 3, 5, 6], [1, 1, 1, 1]]`
-
-Additionally, you can use the project settings in PyCharm to add the packages to the interpreter. Searching for the packages by name should come up with only a few results, so it should be somewhat simple once you find the window.
 
 
 
