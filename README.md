@@ -14,9 +14,9 @@ Before using this program, I would suggest viewing [the Big Guide on GameFAQs](h
 I would specifically recommend looking at section 5b and reading the note on **Skill Ranks**, as they are incredibly important when trying to get very high ranking skills onto a persona.
 Additionally, [this github page](https://aqiu384.github.io/megaten-fusion-tool/p3fes/personas) is extremely useful when trying to find a path to fuse down for a specific persona.
 
-![An example image of how the array for skills is laid out when fusing](/SkillExample.png)
 
-Above is how the skills should be numbered when editing them in line 68. In this example, skills 1, 3, 5 & 6 are the inherited skills, so the line should read `step2 = step1[[1, 3, 5, 6], [1, 1, 1, 1]]`
+# To use the program, create a new project file in your python IDE and import the required libraries.
+I have been having trouble with uploading the entirety of the project, so the best way to use this yourself is to create a new project in your IDE, import the .py file into the folder, and then import the libraries to finish the installation.
 
 The required libraries for this project are easyocr, pynput, and pyautogui. The install commands are as follows
 
@@ -25,6 +25,10 @@ The required libraries for this project are easyocr, pynput, and pyautogui. The 
 `pip install pynput`
 
 `pip install pyautogui`
+
+![An example image of how the array for skills is laid out when fusing](/SkillExample.png)
+
+Above is how the skills should be numbered when editing them in line 68. In this example, skills 1, 3, 5 & 6 are the inherited skills, so the line should read `step2 = step1[[1, 3, 5, 6], [1, 1, 1, 1]]`
 
 Additionally, you can use the project settings in PyCharm to add the packages to the interpreter. Searching for the packages by name should come up with only a few results, so it should be somewhat simple once you find the window.
 
