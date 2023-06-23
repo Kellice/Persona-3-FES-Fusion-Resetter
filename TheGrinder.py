@@ -11,6 +11,7 @@ keyboard = Controller()
 # in the first line to "True" to increase processing speed
 
 time.sleep(4)
+#TODO Initialize all variables
 correct = 0
 wrong = 1
 # This pauses the program for a moment to allow you to tab over to the emulator
@@ -19,6 +20,8 @@ while correct < 4 or wrong > 0:
     # This loop keeps the program resetting as long as you do not have the skills you want
     # Set the correct < x to the amount of skills you want to inherit, and wrong > x to
     # the maximum amount of unwanted skills you will allow
+    #TODO Edit for fes not allowing personas to be easily put in slots 1 and 2
+    #TODO replace hard coded keybinds with a varible for different bindings
     keyboard.press('d')
     time.sleep(0.15)
     keyboard.release('d')
@@ -48,6 +51,7 @@ while correct < 4 or wrong > 0:
     # To reset for a cross, pentagon or hexagon spread, the only inputs needed are one "Circle"
     # input and the one "Cross" input
 
+    #TODO read screen dimesions and do math to find the correct region
     pyautogui.screenshot('screenshot.png', region=(348, 733, 809, 233))
     result = reader.readtext('screenshot.png')
     print(result)
@@ -64,6 +68,7 @@ while correct < 4 or wrong > 0:
     # will likely allow you to do something similar
     # The rest of the section reads the screen via the OCR, and nothing there needs to be formatted
 
+    #TODO remove hard coded arrays and use varibles
     step1 = np.array(result)
     step2 = step1[[1, 3, 5, 6], [1, 1, 1, 1]]
     step3 = np.array2string(step2)
@@ -80,6 +85,7 @@ while correct < 4 or wrong > 0:
     # For example if you are inheriting 3 skills it should read "[1,1,1]", and for 5 skills it should read "[1,1,1,1,1]"
     # The rest of the variables do not need to be altered
 
+    #TODO replace hard coded array with varible array with user input
     target1 = ["Spell Master", "Repel Dark", "Black Viper", "Mind Charge"]
     filter1 = list(filter(lambda x: x in step3, target1))
     correct = len(filter1)
