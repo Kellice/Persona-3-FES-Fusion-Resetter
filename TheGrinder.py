@@ -14,6 +14,36 @@ time.sleep(4)
 #TODO Initialize all variables
 correct = 0
 wrong = 1
+# Key binds
+circle = 'd'
+cross = 's'
+
+wantedSkills = ["Spell Master", "Repel Dark", "Black Viper", "Mind Charge"]
+unwantedSkills = ["Marin Karin", "Eerie Sound", "Eerie_Sound"]
+numInnateSkills = 2
+numInheritSkills = 5
+numTotal = numInnateSkills + numInheritSkills
+numRightHandSide = numTotal - 4
+
+skillLocations = []
+# add an index for every skill
+for i in range(numTotal):
+    skillLocations.append(i)
+idx = 0
+# remove innate skills from being read
+for i in range(numInnateSkills):
+    # Remove from front
+    skillLocations.pop(idx)
+    # Check if there is a skill on the right to skip
+    if numRightHandSide > 0:
+        idx += 1
+        numRightHandSide -= 1
+oneList = []
+for i in range(len(skillLocations)):
+    oneList.append(1)
+
+print(skillLocations)
+
 # This pauses the program for a moment to allow you to tab over to the emulator
 # After that it initialises the "wrong" and "correct" variables so the while loop won't immediately break
 while correct < 4 or wrong > 0:
@@ -22,21 +52,21 @@ while correct < 4 or wrong > 0:
     # the maximum amount of unwanted skills you will allow
     #TODO Edit for fes not allowing personas to be easily put in slots 1 and 2
     #TODO replace hard coded keybinds with a varible for different bindings
-    keyboard.press('d')
+    keyboard.press(circle)
     time.sleep(0.15)
-    keyboard.release('d')
+    keyboard.release(circle)
     time.sleep(0.35)
-    keyboard.press('d')
+    keyboard.press(circle)
     time.sleep(0.15)
-    keyboard.release('d')
+    keyboard.release(circle)
     time.sleep(0.35)
-    keyboard.press('s')
+    keyboard.press(cross)
     time.sleep(0.15)
-    keyboard.release('s')
+    keyboard.release(cross)
     time.sleep(0.35)
-    keyboard.press('s')
+    keyboard.press(cross)
     time.sleep(0.15)
-    keyboard.release('s')
+    keyboard.release(cross)
     time.sleep(0.75)
     # This runs through the inputs to reset a persona
     # The current inputs have "Circle" bound to "d" and "Cross" bound to "s"
@@ -70,7 +100,7 @@ while correct < 4 or wrong > 0:
 
     #TODO remove hard coded arrays and use varibles
     step1 = np.array(result)
-    step2 = step1[[1, 3, 5, 6], [1, 1, 1, 1]]
+    step2 = step1[skillLocations, oneList]
     step3 = np.array2string(step2)
     # This step takes the output of the OCR and converts it into a usable string for the filter
     # Depending on what you are fusing, you will need to alter the values in the "step2" variable
@@ -86,14 +116,14 @@ while correct < 4 or wrong > 0:
     # The rest of the variables do not need to be altered
 
     #TODO replace hard coded array with varible array with user input
-    target1 = ["Spell Master", "Repel Dark", "Black Viper", "Mind Charge"]
+    target1 = wantedSkills
     filter1 = list(filter(lambda x: x in step3, target1))
     correct = len(filter1)
     print(step3)
     print(filter1)
     print(correct)
 
-    target2 = ["Marin Karin", "Eerie Sound", "Eerie_Sound"]
+    target2 = unwantedSkills
     filter2 = list(filter(lambda x: x in step3, target2))
     wrong = len(filter2)
     print(filter2)
