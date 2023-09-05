@@ -10,18 +10,31 @@ keyboard = Controller()
 # If you have a GPU in your system that is good, you can set the gpu argument
 # in the first line to "True" to increase processing speed
 
-time.sleep(4)
+#Verbose will print extra information, mostly things for debugging
+verbose = True
+
+# TODO define functions for the code
+def pressButton(button):
+    """
+    Press a button on the keyboard the release it
+    :param button: the button to be pressed
+    :return: None
+    """
+    keyboard.press(button)
+    time.sleep(.15)
+    keyboard.release(button)
+    time.sleep(.35)
+
 #TODO Initialize all variables
-correct = 0
-wrong = 1
+
 # Key binds
-circle = 'd'
-cross = 's'
+circle = 'z'
+cross = 'x'
 
 wantedSkills = ["Spell Master", "Repel Dark", "Black Viper", "Mind Charge"]
 unwantedSkills = ["Marin Karin", "Eerie Sound", "Eerie_Sound"]
 numInnateSkills = 2
-numInheritSkills = 5
+numInheritSkills = 3
 numTotal = numInnateSkills + numInheritSkills
 numRightHandSide = numTotal - 4
 
@@ -42,32 +55,25 @@ oneList = []
 for i in range(len(skillLocations)):
     oneList.append(1)
 
-print(skillLocations)
+if verbose:
+    print('The array for skill locations:' + str(skillLocations))
 
 # This pauses the program for a moment to allow you to tab over to the emulator
+time.sleep(4)
 # After that it initialises the "wrong" and "correct" variables so the while loop won't immediately break
+correct = 0
+wrong = 1
 while correct < 4 or wrong > 0:
     # This loop keeps the program resetting as long as you do not have the skills you want
     # Set the correct < x to the amount of skills you want to inherit, and wrong > x to
     # the maximum amount of unwanted skills you will allow
     #TODO Edit for fes not allowing personas to be easily put in slots 1 and 2
-    #TODO replace hard coded keybinds with a varible for different bindings
-    keyboard.press(circle)
-    time.sleep(0.15)
-    keyboard.release(circle)
-    time.sleep(0.35)
-    keyboard.press(circle)
-    time.sleep(0.15)
-    keyboard.release(circle)
-    time.sleep(0.35)
-    keyboard.press(cross)
-    time.sleep(0.15)
-    keyboard.release(cross)
-    time.sleep(0.35)
-    keyboard.press(cross)
-    time.sleep(0.15)
-    keyboard.release(cross)
-    time.sleep(0.75)
+    # @Kelli I edited your code to use a function to make it look clear and more readable
+    pressButton(circle)
+    pressButton(circle)
+    pressButton(cross)
+    pressButton(cross)
+    time.sleep(0.4)
     # This runs through the inputs to reset a persona
     # The current inputs have "Circle" bound to "d" and "Cross" bound to "s"
     # The series of inputs will reset between two personas as long as the persona that is
